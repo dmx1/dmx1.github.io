@@ -1,187 +1,282 @@
-// Mobile Menu Toggle
-const mobileToggle = document.getElementById("mobileToggle")
-const navMenu = document.getElementById("navMenu")
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MALAGALA DAVID - Web Developer Portfolio</title>
+    <meta name="description" content="Full Stack Web Developer specializing in modern web applications and WordPress development">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-brand">MALAGALA DAVID</div>
+        <nav class="nav-menu" id="navMenu">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About Me</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <button class="btn btn-primary">Contact Me</button>
+        </nav>
+        <div class="mobile-menu-toggle" id="mobileToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
 
-mobileToggle.addEventListener("click", () => {
-  navMenu.classList.toggle("active")
-})
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="hero-greeting">HELLO, I AM</p>
+                    <h1 class="hero-title">MALAGALA DAVID</h1>
+                    <h2 class="hero-subtitle">I AM Web Developer</h2>
+                    <p class="hero-description">
+                        I can't think but together. I'm a full stack web developer who is passionate about making error-free
+                        websites with 100% client satisfaction. I love to talk with you about your unique ideas.
+                    </p>
+                    <button class="btn btn-primary btn-large">Contact</button>
+                </div>
 
-// Close mobile menu when clicking on a link
-const navLinks = document.querySelectorAll(".nav-link")
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    navMenu.classList.remove("active")
-  })
-})
+                <div class="hero-image">
+                    <div class="profile-container">
+                        <div class="profile-circle">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" 
+                                 alt="MALAGALA DAVID - Professional Web Developer with glasses and denim shirt, arms crossed in confident pose" 
+                                 class="profile-img">
+                        </div>
+                    </div>
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault()
-    const target = document.querySelector(this.getAttribute("href"))
-    if (target) {
-      const headerHeight = document.querySelector(".header").offsetHeight
-      const targetPosition = target.offsetTop - headerHeight
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">6+</div>
+                            <div class="stat-label">Years of Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth",
-      })
-    }
-  })
-})
+    <!-- What I Do Section -->
+    <section id="about" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">WHAT I DO</h2>
+                <p class="section-subtitle">My Services</p>
+            </div>
 
-// Header background on scroll
-window.addEventListener("scroll", () => {
-  const header = document.querySelector(".header")
-  if (window.scrollY > 100) {
-    header.style.backgroundColor = "rgba(17, 24, 39, 0.98)"
-  } else {
-    header.style.backgroundColor = "rgba(17, 24, 39, 0.95)"
-  }
-})
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="service-title">DESIGN SKILLS</h3>
+                    <p class="service-description">
+                        I create ux ui design wireframes creating users user experience and user interface with a strong eye for
+                        aesthetics and usability.
+                    </p>
+                    <a href="#" class="service-link">See more →</a>
+                </div>
 
-// Intersection Observer for animations
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
-}
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="service-title">FULL STACK DEVELOPER</h3>
+                    <p class="service-description">
+                        I'm a full stack web developer who is passionate about making error-free websites with both client-side
+                        technologies.
+                    </p>
+                    <a href="#" class="service-link">See more →</a>
+                </div>
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible")
-    }
-  })
-}, observerOptions)
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-wordpress"></i>
+                    </div>
+                    <h3 class="service-title">WORDPRESS DEVELOPER</h3>
+                    <p class="service-description">
+                        Professional WordPress development with clean code and modern design. I love to work in creating
+                        user-friendly, customization sites.
+                    </p>
+                    <a href="#" class="service-link">See more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-// Add fade-in class to elements and observe them
-document.addEventListener("DOMContentLoaded", () => {
-  const animatedElements = document.querySelectorAll(".service-card, .portfolio-card, .testimonial-card, .contact-card")
+    <!-- Portfolio Section -->
+    <section id="projects" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">PORTFOLIO</h2>
+                <p class="section-subtitle">My Projects</p>
+            </div>
 
-  animatedElements.forEach((el) => {
-    el.classList.add("fade-in")
-    observer.observe(el)
-  })
-})
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=200&fit=crop" 
+                             alt="Equipment & Spill Parts Website">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Equipment & Spill Parts</h3>
+                        <p class="portfolio-category">WordPress Theme Development</p>
+                        <a href="#" class="portfolio-link">See Project →</a>
+                    </div>
+                </div>
 
-// Contact button functionality
-const contactButtons = document.querySelectorAll(".btn-primary")
-contactButtons.forEach((button) => {
-  button.addEventListener("click", (e) => {
-    if (button.textContent.includes("Contact")) {
-      e.preventDefault()
-      const contactSection = document.getElementById("contact")
-      if (contactSection) {
-        const headerHeight = document.querySelector(".header").offsetHeight
-        const targetPosition = contactSection.offsetTop - headerHeight
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=300&h=200&fit=crop" 
+                             alt="City Skyline Website Design">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">City Development</h3>
+                        <p class="portfolio-category">Figma to WordPress development</p>
+                        <a href="#" class="portfolio-link">See Project →</a>
+                    </div>
+                </div>
 
-        window.scrollTo({
-          top: targetPosition,
-          behavior: "smooth",
-        })
-      }
-    }
-  })
-})
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&h=200&fit=crop" 
+                             alt="Nature Website with Leaf Design">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Nature Portfolio</h3>
+                        <p class="portfolio-category">3D to WordPress development</p>
+                        <a href="#" class="portfolio-link">See Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-// Social media link tracking (optional)
-const socialLinks = document.querySelectorAll(".social-link")
-socialLinks.forEach((link) => {
-  link.addEventListener("click", (e) => {
-    const platform = link.classList[1] // Gets the platform class (whatsapp, github, etc.)
-    console.log(`Clicked on ${platform} social link`)
-    // You can add analytics tracking here
-  })
-})
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">TESTIMONIALS</h2>
+                <p class="section-subtitle">What my clients say about me</p>
+            </div>
 
-// Form validation (if you add a contact form later)
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  return re.test(email)
-}
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "He is a very nice guy to work with. Thanks a lot for helping and I will do more business with you 😊"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" 
+                             alt="Client testimonial" class="author-avatar">
+                        <div class="author-info">
+                            <div class="author-name">John Smith</div>
+                            <div class="author-title">Designer</div>
+                        </div>
+                    </div>
+                </div>
 
-// Typing effect for hero title (optional enhancement)
-function typeWriter(element, text, speed = 100) {
-  let i = 0
-  element.innerHTML = ""
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Great experience, highly recommend him. Worked through all the questions with me and was very responsive
+                        to my requirements."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" 
+                             alt="Client testimonial" class="author-avatar">
+                        <div class="author-info">
+                            <div class="author-name">Sarah Johnson</div>
+                            <div class="author-title">Manager</div>
+                        </div>
+                    </div>
+                </div>
 
-  function type() {
-    if (i < text.length) {
-      element.innerHTML += text.charAt(i)
-      i++
-      setTimeout(type, speed)
-    }
-  }
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "All is working great to work with him is extremely responsive and always returns the work in a timely
+                        manner. Great to work with!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" 
+                             alt="Client testimonial" class="author-avatar">
+                        <div class="author-info">
+                            <div class="author-name">Mike Wilson</div>
+                            <div class="author-title">Manager</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  type()
-}
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">CONTACT</h2>
+                <p class="section-subtitle">Are You Looking For Your Business Online Presence? I am here 😊</p>
+            </div>
 
-// Initialize typing effect on page load (optional)
-document.addEventListener("DOMContentLoaded", () => {
-  const heroTitle = document.querySelector(".hero-title")
-  if (heroTitle) {
-    const originalText = heroTitle.textContent
-    // Uncomment the line below to enable typing effect
-    // typeWriter(heroTitle, originalText, 150);
-  }
-})
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3 class="contact-title">MALAGALA DAVID</h3>
+                    <p class="contact-description">Web Developer (Full Stack)</p>
+                </div>
 
-// Scroll to top functionality
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  })
-}
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="contact-title">Freelance</h3>
+                    <p class="contact-description">Available Right Now</p>
+                </div>
 
-// Add scroll to top button (optional)
-const scrollButton = document.createElement("button")
-scrollButton.innerHTML = "↑"
-scrollButton.className = "scroll-to-top"
-scrollButton.style.cssText = `
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #10b981;
-    color: white;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1000;
-`
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="contact-title">Email</h3>
+                    <p class="contact-description">malagala.david@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-document.body.appendChild(scrollButton)
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://wa.me/1234567890" class="social-link whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://github.com/malagaladavid" class="social-link github">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="footer-text">© All Rights Reserved 2024 - MALAGALA DAVID</div>
+            </div>
+        </div>
+    </footer>
 
-scrollButton.addEventListener("click", scrollToTop)
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 300) {
-    scrollButton.style.opacity = "1"
-  } else {
-    scrollButton.style.opacity = "0"
-  }
-})
-
-// Performance optimization: Lazy loading for images
-if ("IntersectionObserver" in window) {
-  const imageObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const img = entry.target
-        img.src = img.dataset.src
-        img.classList.remove("lazy")
-        imageObserver.unobserve(img)
-      }
-    })
-  })
-
-  document.querySelectorAll("img[data-src]").forEach((img) => {
-    imageObserver.observe(img)
-  })
-}
+    <script src="script.js"></script>
+</body>
+</html>
